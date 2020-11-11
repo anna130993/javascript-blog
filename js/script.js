@@ -1,4 +1,5 @@
 const titleClickHandler = function(event){
+    event.preventDefault();
     const clickedElement = this;
     console.log('Link was clicked!');
   
@@ -24,7 +25,8 @@ const titleClickHandler = function(event){
   
     /* find the correct article using the selector (value of 'href' attribute) */
   
-    /* add class 'active' to the correct article */
+    /* [DONE] add class 'active' to the correct article */
+    activeArticle.classList.add('active');
   }
   
   const links = document.querySelectorAll('.titles a');
