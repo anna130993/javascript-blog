@@ -42,19 +42,19 @@ const titleClickHandler = function(event){
   /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = "";
-  /* for each article */
+  /* find all the articles and save them to variable: articles */
     const articles = document.querySelectorAll(optArticleSelector);
-
-    let html ="";
+/* for each article */
+    let html = "";
     for(let article of articles){
     /* get the article id */
       const articleId = article.getAttribute('id');
     /* find the title element */ /* get the title from the title element */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     /* insert link into titleList */
-    html = html + linkHTML;
+      html = html + linkHTML;
     }
     titleList.innerHTML = html;
   }
