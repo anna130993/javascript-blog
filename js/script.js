@@ -36,11 +36,11 @@
 
   /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
-    titleList.innerHTML = "";
-  /* find all the articles and save them to variable: articles */
-    const articles = document.querySelectorAll(optArticleSelector);
-/* for each article */
+  
+  /* for each article */
     let html = "";
+
+    const articles = document.querySelectorAll(optArticleSelector);
     for(let article of articles){
     /* get the article id */
       const articleId = article.getAttribute('id');
@@ -53,12 +53,12 @@
     }
     titleList.innerHTML = html;
 
-    const links = document.querySelectorAll('.titles .a');
+    const links = document.querySelectorAll('.titles a');
     console.log(links);
     for (let link of links){
       link.addEventListener('click', titleClickHandler);
+    }
   }
-}
 
 generateTitleLinks();
 
