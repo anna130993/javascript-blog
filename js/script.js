@@ -54,10 +54,10 @@ const titleClickHandler = function(event){
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     /* insert link into titleList */
-    titleList.innerHTML = titleList.innerHTML + linkHTML
-    console.log(html);
+    html = html + linkHTML;
     }
-   }
+    titleList.innerHTML = html;
+  }
 
 generateTitleLinks();
 
