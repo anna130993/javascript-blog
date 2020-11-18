@@ -71,7 +71,6 @@
       tagsWrapper.innerHTML = html;
     }
   }
-
   generateTags();
 
   function tagClickHandler(event){
@@ -106,7 +105,7 @@
       const authorWrapper = article.querySelector(optArticleAuthorSelector);
       let html = '';
       const articleAuthor = article.getAttribute('data-author');
-      const authorHTML = 'written by' + '<li><a href="#author-'+ articleAuthor + '">' + articleAuthor + '</a></li>';
+      const authorHTML = 'written by' + ' ' + '<a href="#author-'+ articleAuthor + '">' + articleAuthor + '</a>';
       html = html + authorHTML;
       authorWrapper.innerHTML = html;
     }
