@@ -3,7 +3,7 @@
     event.preventDefault();
     const clickedElement = this;
     console.log('Link was clicked!');
-  
+
     const activeLinks = document.querySelectorAll('.titles a.active');
 
     for(let activeLink of activeLinks){
@@ -12,7 +12,7 @@
 
     console.log('clickedElement:', clickedElement);
     clickedElement.classList.add('active');
-  
+
     const activeArticles = document.querySelectorAll('.posts article.active');
 
     for(let activeArticle of activeArticles){
@@ -32,6 +32,7 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
 
+  // eslint-disable-next-line no-inner-declarations
   function generateTitleLinks(){
     const titleList = document.querySelector(optTitleListSelector);
 
@@ -47,7 +48,7 @@
     titleList.innerHTML = html;
 
     const links = document.querySelectorAll('.titles a');
-    
+
     for(let link of links){
       link.addEventListener('click', titleClickHandler);
     }
