@@ -80,6 +80,12 @@
     }
   }
 
+  function calculateTagClass = (count, params){
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+  }
+
   function generateTags(){
     let allTags = {};
     const articles = document.querySelectorAll(optArticleSelector);
