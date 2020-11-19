@@ -1,8 +1,6 @@
-{
-  const titleClickHandler = function(event){
+const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this;
-    console.log('Link was clicked!');
 
     const activeLinks = document.querySelectorAll('.titles a.active');
 
@@ -10,7 +8,6 @@
       activeLink.classList.remove('active');
     }
 
-    console.log('clickedElement:', clickedElement);
     clickedElement.classList.add('active');
 
     const activeArticles = document.querySelectorAll('.posts article.active');
@@ -20,10 +17,7 @@
     }
 
     const articleSelector = clickedElement.getAttribute('href');
-    console.log(articleSelector);
-
     const targetArticle = document.querySelector(articleSelector);
-    console.log(targetArticle);
 
     targetArticle.classList.add('active');
   };
@@ -84,6 +78,7 @@
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
+    return Math.floor( percentage * (optCloudClassCount - 1) + 1);
   }
 
   function generateTags(){
@@ -109,7 +104,7 @@
     tagList.innerHTML = allTags.join(' ');
     const tagsParams = calculateTagsParams(allTags);
     let allTagsHTML = '';
-    for(let tagHTML in allTags){
+    for(let tag in allTags){
       allTagsHTML += tagHTML + ' (' + allTags[tagHTML] + ') ';
       const tagLinkHTML = '<li><a href="#tag-' + tag + ' class"' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
     }
