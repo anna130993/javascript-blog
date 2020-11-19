@@ -32,7 +32,10 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list',
+    optCloudClassCount = 5,
+    optCloudClassPrefix = 'tag-size-';
 
   function generateTitleLinks(customSelector = ''){
     const titleList = document.querySelector(optTitleListSelector);
@@ -57,7 +60,28 @@
 
   generateTitleLinks();
 
+  function calculateTagsParams(tags){
+    const params = {
+      max: 0;
+      min: 999999;
+    };
+    for(let tag in tags){
+      console.log(tag + ' is used ' + tags[tag] + ' times ');
+      if(tags[tag] > params.max){
+        params.max = tags[tag];
+      }
+    }
+    for(let tag in tags){
+      console.log(tag + ' is used ' + tags[tag] + ' times ');
+      if(tags[tag] < params.min){
+        params.min = tags[tag];
+      }
+      return params;
+    }
+  }
+
   function generateTags(){
+    let allTags = {};
     const articles = document.querySelectorAll(optArticleSelector);
     for (let article of articles){
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
@@ -67,9 +91,23 @@
       for(let tag of articleTagsArray){
         const tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
         html = html + tagHTML + ' ';
+        if(!allTags[tag]){
+          allTags[tag] = 1;
+        } else {
+          allTags [tag]++;
+        }
       }
       tagsWrapper.innerHTML = html;
     }
+    const tagList = document.querySelector('.tags');
+    tagList.innerHTML = allTags.join(' ');
+    const tagsParams = calculateTagsParams(allTags);
+    let allTagsHTML = '';
+    for(let tagHTML in allTags){
+      allTagsHTML += tagHTML + ' (' + allTags[tagHTML] + ') ';
+      const tagLinkHTML = '<li><a href="#tag-' + tag + ' class"' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
+    }
+    tagList.innerHTML = allTagsHTML;
   }
   generateTags();
 
