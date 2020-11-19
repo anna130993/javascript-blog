@@ -1,3 +1,13 @@
+const optArticleSelector = ".post",
+  optTitleSelector = ".post-title",
+  optTitleListSelector = ".titles",
+  optArticleTagsSelector = ".post-tags .list",
+  optArticleAuthorSelector = ".post-author",
+  optTagsListSelector = ".tags.list",
+  optCloudClassCount = 5,
+  optCloudClassPrefix = "tag-size-",
+  optAuthorsListSelector = ".authors.list";
+
 const titleClickHandler = function(event){
   event.preventDefault();
   const clickedElement = this;
@@ -21,16 +31,6 @@ const titleClickHandler = function(event){
 
   targetArticle.classList.add('active');
 };
-
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.list.authors';
 
 function generateTitleLinks(customSelector = ''){
   const titleList = document.querySelector(optTitleListSelector);
@@ -69,7 +69,7 @@ function calculateTagsParams(tags){
       params.min = tags[tag];
     }
   }
-   return params;
+  return params;
 }
 
 function calculateTagClass (count, params){
@@ -77,7 +77,7 @@ function calculateTagClass (count, params){
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
   const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1);
-  return optCloudClassPrefix + classNumber;
+  return classNumber;
 }
 
 function generateTags(){
