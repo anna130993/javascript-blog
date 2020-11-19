@@ -98,7 +98,7 @@ function generateTags(){
     const articleTags = article.getAttribute('data-tags');
     const articleTagsArray = articleTags.split(' ');
     for(let tag of articleTagsArray){
-      const linkHTMLData = {id:"tag-" + tag, title: tag + ' '};
+      const linkHTMLData = {id:'tag-' + tag, title: tag + ' '};
       const tagHTML = templates.tagLink(linkHTMLData);
       html = html + tagHTML + ' ';
       if(!allTags[tag]){
@@ -156,7 +156,7 @@ function generateAuthors(){
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
     let html = '';
     const articleAuthor = article.getAttribute('data-author');
-    const authorHTMLData = {id: "author-" + articleAuthor, title: articleAuthor};
+    const authorHTMLData = {id: 'author-' + articleAuthor, title: articleAuthor};
     const authorHTML = templates.authorLink(authorHTMLData);
     html = html + authorHTML;
     if(!allAuthors[articleAuthor]){
