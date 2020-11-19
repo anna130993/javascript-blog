@@ -106,7 +106,7 @@ function generateTags(){
   let allTagsHTML = '';
   for(let tag in allTags){
     const counterClass = calculateTagClass(allTags[tag], tagsParams);
-    const tagLinkHTML = '<li><a href="#tag-${tag}" class="tag-size-${counterClass}">${tag}</a></li>';
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="tag-size-' + counterClass + '">' + tag + '</a></li>';
     allTagsHTML += tagLinkHTML;
   }
   tagList.innerHTML = allTagsHTML;
@@ -159,7 +159,7 @@ function generateAuthors(){
   const authorsList = document.querySelector(optAuthorsListSelector);
   let html = '';
   for(let articleAuthor in allAuthors){
-    const authorLinkHTML = '<li><a href="#author-${articleAuthor}"> ${articleAuthor} </a></li>';
+    const authorLinkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
     html = html + authorLinkHTML;
   }
   authorsList.innerHTML = html;
