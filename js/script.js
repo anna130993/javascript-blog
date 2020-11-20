@@ -11,9 +11,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
   optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
   optAuthorsListSelector = '.authors.list';
 
 const titleClickHandler = function(event){
@@ -141,7 +139,7 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  const allLinksToTags = document.querySelectorAll('a.active[href^="#tag-"]');
+  const allLinksToTags = document.querySelectorAll('a[href^="#tag-"]');
   for(let linkToTag of allLinksToTags){
     linkToTag.addEventListener('click', tagClickHandler);
   }
@@ -192,7 +190,7 @@ function authorClickHandler(event){
   for(let authorLink of authorLinks){
     authorLink.classList.add('active');
   }
-  generateTitleLinks('[data-author~="' + author + '"]');
+  generateTitleLinks('[data-author="' + author + '"]');
 }
 
 function addClickListenersToAuthors(){
